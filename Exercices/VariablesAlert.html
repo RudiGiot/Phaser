@@ -1,0 +1,54 @@
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Variables - Alert</title>
+    <script src="../../../phaser-2.7.7/build/phaser.min.js"></script>
+</head>
+
+<body>
+
+    <script type="text/javascript">
+        window.onload = function () {
+
+            // Single line comment starts with // and continues to the end of line ................
+
+            var game = new Phaser.Game(800, 600, Phaser.AUTO, '', {
+                create: create
+            });
+            // see reference http://phaser.io/docs/2.4.7/Phaser.Game.html for details
+
+
+            function create() {
+
+                //A variable name first char must be a letter, $ or _. 
+                //The second char and other chars are allowed to be digits.
+
+                var helloString = "Hello world";
+                var number = 5;
+
+                //JavaScript is CaSE-sEnSitiVe
+
+                alert(helloString);
+                alert(number);
+
+                // operator + concatenates strings
+                alert(helloString + ' ' + number);
+
+                //you are free to reassign the variable to a value of another type
+                number = " and friends";
+                alert(helloString + number);
+
+                /*
+                Multiple lines comment starts with /* 
+                and continues 
+                until ... */
+
+            }
+
+        };
+    </script>
+
+</body>
+
+</html>

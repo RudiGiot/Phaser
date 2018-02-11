@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Exercise 2-2</title>
+    <script src="../../../phaser-2.7.7/build/phaser.min.js"></script>
+</head>
+
+<body>
+
+    <script type="text/javascript">
+        window.onload = function () {
+
+            var game = new Phaser.Game(800, 600, Phaser.AUTO, '', {
+                preload: preload,
+                create: create
+            });
+
+            function preload() {
+                game.load.image('star', '../Assets/star.png');
+            }
+
+            function create() {
+                var i = 0;
+                while (i < 20) {
+                    game.add.sprite(Math.floor(Math.random() * 14) * 50, Math.floor(Math.random() * 14) * 50, 'star');
+                    i++;
+                }
+            }
+
+        };
+    </script>
+
+</body>
+
+</html>

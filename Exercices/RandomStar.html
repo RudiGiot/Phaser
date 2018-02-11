@@ -1,0 +1,35 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title>RandomStar</title>
+    <script src="../../../phaser-2.7.7/build/phaser.min.js"></script>
+</head>
+
+<body>
+
+    <script type="text/javascript">
+        window.onload = function () {
+
+            var game = new Phaser.Game(800, 600, Phaser.AUTO, '', {
+                preload: preload,
+                create: create
+            });
+
+            function preload() {
+                game.load.image('star', '../Assets/star.png');
+            }
+
+            function create() {
+                for (var i = 0; i < 20; i++) {
+                    game.add.sprite(Math.floor(Math.random() * 14) * 50, Math.floor(Math.random() * 14) * 40, 'star');
+                }
+            }
+
+        };
+    </script>
+
+</body>
+
+</html>
