@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Exercise 4-1</title>
+    <script src="../../../phaser-2.7.7/build/phaser.min.js"></script>
+</head>
+
+<body>
+
+    <script type="text/javascript">
+        window.onload = function () {
+
+            var game = new Phaser.Game(800, 600, Phaser.CANVAS, 'phaser-example', {
+                preload: preload,
+                create: create
+            });
+
+            function preload() {
+                game.load.image('tiles', '../Assets/sci-fi-tiles.png');
+            }
+
+            function create() {
+                //  Créer une map de 50 par 30 avec des Tiles de 16x16
+                map = game.add.tilemap(null, 16, 16, 50, 30);
+                map.addTilesetImage('tiles', 'tiles', 16, 16);
+                layer1 = map.create('level1', 50, 30, 16, 16);
+                // Il y a 56 Tiles dans le fichier. Attention le premier est transparent !
+                for (var i = 0; i < 56; i++) {
+                    map.putTile(i, i % 50, Math.trunc(i / 50), layer1);
+                }
+                layer1.resizeWorld();
+            }
+        };
+    </script>
+
+</body>
+
+</html>

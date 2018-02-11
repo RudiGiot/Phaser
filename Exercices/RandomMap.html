@@ -1,0 +1,61 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Exercise 4-0 </title>
+    <script src="../../../phaser-2.7.7/build/phaser.min.js"></script>
+</head>
+
+<body>
+
+    <script type="text/javascript">
+        window.onload = function () {
+
+            var game = new Phaser.Game(800, 640, Phaser.AUTO, 'phaser-example', {
+                preload: preload,
+                create: create
+            });
+
+            function preload() {
+
+                //  attention Tiles are 16x16 pixels
+                game.load.image('tiles', '../Assets/sci-fi-tiles.png');
+
+            }
+
+            function create() {
+
+                //  Create our map (the 16x16 is the tile size and 50x30 is the number of tiles)
+                map = game.add.tilemap(null, 16, 16, 50, 40);
+
+                //  'tiles' = cache image key, 16x16 = tile size
+                map.addTilesetImage('tiles', 'tiles', 16, 16);
+
+                layer1 = map.create('level1', 50, 40, 16, 16);
+                
+                for(var y=0; y<40 ; y++){
+                    for(var x=0; x<50 ; x++){
+                        indice = NombreAleatoire(28, 39); 
+                        map.putTile(indice, x, y, layer1);
+                    }
+                }
+                
+                // Attributes : tile number, x (grid index, not in Pixel), y, layer
+                
+                layer1.resizeWorld();
+                
+                // Exercice : Afficher les 56 tiles du TileSet sur 8 lignes de 7 tiles
+                
+            }
+            
+            function NombreAleatoire(min, max) {
+               return Math.floor(Math.random()*(max-min))+min;
+            }
+
+        };
+    </script>
+
+</body>
+
+</html>
