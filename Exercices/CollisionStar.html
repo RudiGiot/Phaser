@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Flying Star</title>
+    <script src="../../../phaser-2.7.7/build/phaser.min.js"></script>
+</head>
+
+<body>
+
+    <script type="text/javascript">
+        window.onload = function () {
+            var game = new Phaser.Game(800, 600, Phaser.AUTO, '', {
+                preload: preload,
+                create: create,
+                update: update
+            });
+            var star1, star2;
+
+            function preload() {
+                game.load.image('star', '../Assets/star.png');
+            }
+
+            function create() {
+                star1 = game.add.sprite(100, 100, 'star');
+                star2 = game.add.sprite(700, 100, 'star');
+                game.physics.arcade.enable(star1);
+                game.physics.arcade.enable(star2);
+                star1.body.velocity.x = 100;
+                star2.body.velocity.x = -100;
+            }
+            
+            function update() {
+                game.physics.arcade.collide(star1, star2, collisionStar, null, this);
+            }
+            
+            function collisionStar(_star1, _star2) {
+            _star1.kill();
+            _star2.kill();
+            }
+        };
+    </script>
+
+</body>
+
+</html>
